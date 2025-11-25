@@ -12,33 +12,37 @@ SegNet (VGG16) – Semantic Segmentation
 
 Detects and segments person, cat, sports ball, book
 
-Uses Detectron2 library with pre-trained COCO weights
+Uses Detectron2 with pre-trained COCO weights
 
 Dataset filtered to target classes
 
-Trains on custom COCO-style dataset
+Outputs: predicted masks, bounding boxes, and overlays
 
-Outputs: predicted masks, bounding boxes, and overlay visualizations
+Evaluation with COCO metrics
 
-Evaluates with COCO metrics (AP, AR)
+Installation:
+
+# PyTorch + CUDA 12.1
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+
+# Detectron2
+pip install git+https://github.com/facebookresearch/detectron2.git
 
 2. SegNet (VGG16)
 
 Semantic segmentation with skip connections
 
-Trains with Dice + Weighted CrossEntropy Loss
+Loss: Dice + Weighted CrossEntropy
 
 Data augmentation using Albumentations
 
-Evaluation metrics: mIoU, F1 score, precision, recall
+Evaluation: mIoU, F1, precision, recall
 
-Outputs: predicted masks and overlays
+Outputs: predicted masks, overlay visualizations, loss & metric plots
 
-Setup
-# PyTorch & dependencies
-pip install torch torchvision torchaudio
+Installation:
+
 pip install segmentation_models_pytorch albumentations pycocotools opencv-python matplotlib tqdm
-pip install detectron2 -f https://dl.fbaipublicfiles.com/detectron2/wheels/cu117/torch2.1/index.html
 
 Usage
 
@@ -56,14 +60,14 @@ Train SegNet:
 python train_segnet.py
 
 
-Run inference and save predictions.
+Run inference to save predicted masks and overlay images.
 
 Outputs
 
 Mask R-CNN: segmented instances with bounding boxes
 
-SegNet: semantic masks and overlay visualizations
+SegNet: semantic masks and overlays
 
-Training plots: loss curves, mIoU, F1 score
+Training plots for loss, mIoU, F1 score
 
 Confusion matrix for SegNet
